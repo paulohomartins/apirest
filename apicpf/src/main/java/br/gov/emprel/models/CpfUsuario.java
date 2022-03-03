@@ -27,11 +27,18 @@ public class CpfUsuario {
 			this.resultado = resultado;
 		}
 
-
+		
 
 		//Método validar cpf
 		public String validarCpf(String cpf) {
 		String[] conv = cpf.split("");
+		
+		
+		//Verifica se CPF possuí 11 dígitos
+		if(conv.length != 11) {
+			String[] aux = {"1" , "1" ,  "1" , "1" , "1" , "1" , "1" , "1" , "1" , "1" , "1" };
+			conv = aux;
+		}
 		
 		
 		//Digitos validadores
