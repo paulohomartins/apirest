@@ -4,7 +4,7 @@ package br.gov.emprel.models;
 public class CpfUsuario {
 	
 	//Atributos
-		private String resultado;
+		private boolean resultado;
 		private int soma1 = 0;
 		private int soma2 = 0;
 		private int resto1;
@@ -19,28 +19,35 @@ public class CpfUsuario {
 		
 		
 		//Getters and Setters
-		public String getResultado() {
+		public boolean getResultado() {
 			return resultado;
 		}
 
-		public void setResultado(String resultado) {
+		public void setResultado(boolean resultado) {
 			this.resultado = resultado;
 		}
 
 		
 
 		//Método validar cpf
-		public String validarCpf(String cpf) {
+		public boolean validarCpf(String cpf) {
 		String[] conv = cpf.split("");
 		
 		
 		//Verifica se CPF possuí 11 dígitos
-		if(conv.length != 11) {
+		while(conv.length != 11) {
+			resultado = false;
+			break;
+		}
+		
+				
+		//Verifica se a String cpf somente contém números
+		if(cpf.matches("[+-]?\\d*(\\.\\d+)?") != true) {
 			String[] aux = {"1" , "1" ,  "1" , "1" , "1" , "1" , "1" , "1" , "1" , "1" , "1" };
 			conv = aux;
 		}
 		
-		
+
 		//Digitos validadores
 		validador1 = Integer.parseInt(conv[9]);
 		validador2 = Integer.parseInt(conv[10]);
@@ -88,11 +95,11 @@ public class CpfUsuario {
 
 		//Verificar se o cpf é valido
 		if(multiplica1 == multiplica2) {
-		resultado = "CPF inválido";
+		resultado = false;
 		} else if(resto1 == validador1 && resto2 == validador2) {
-		resultado = "CPF valido";
+		resultado = true;
 		} else {
-		resultado = "CPF inválido";
+		resultado = false;
 		}
 		System.out.println(resultado);
 		return resultado;
