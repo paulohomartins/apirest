@@ -16,7 +16,7 @@ public class CpfController {
 	
 	//Método validar cpf
 	@GetMapping("{cpf}")
-	public String validarCpf(@PathVariable String cpf) {
+	public boolean validarCpf(@PathVariable String cpf) {
 		
 		CpfUsuario usuario = new CpfUsuario();
 		
