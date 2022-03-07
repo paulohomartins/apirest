@@ -11,18 +11,19 @@ import br.gov.emprel.models.CpfUsuario;
 @RestController
 @RequestMapping("/emprel")
 public class CpfController {
-	
 
-	
+
+
 	//Método validar cpf
 	@GetMapping("{cpf}")
 	public boolean validarCpf(@PathVariable String cpf) {
-		
-		CpfUsuario usuario = new CpfUsuario();
-		
-		return usuario.validarCpf(cpf);
-		
+	
+	CpfUsuario usuario = new CpfUsuario();
 
-	}
+
+	return usuario.validarCpf(cpf);
+
+
+}
 
 }
